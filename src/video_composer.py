@@ -175,6 +175,12 @@ class VideoComposer:
     ) -> Optional[Any]:
         """创建单个场景的视频片段"""
         try:
+            # 确保MoviePy模块可用
+            from moviepy.editor import (
+                VideoFileClip, ImageClip, AudioFileClip, CompositeVideoClip,
+                CompositeAudioClip, TextClip, concatenate_videoclips
+            )
+            
             # 加载音频
             audio_path = audio_info.get("file_path")
             if not audio_path or not Path(audio_path).exists():

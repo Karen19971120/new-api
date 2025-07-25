@@ -18,21 +18,16 @@ echo ✅ Python检查通过
 :: 检查依赖
 echo 🔍 检查依赖包...
 
-python -c "import customtkinter" > nul 2>&1
+python -c "import tkinter" > nul 2>&1
 if %errorlevel% neq 0 (
-    echo 📦 安装缺失的依赖包...
-    pip install -r requirements.txt
-    if %errorlevel% neq 0 (
-        echo ❌ 依赖安装失败，尝试使用备用方法...
-        pip install customtkinter edge-tts requests openai
-    )
+    echo ❌ 缺少tkinter，请重新安装Python并确保包含tkinter
+    pause
+    exit /b 1
 )
 
-echo ✅ 依赖检查完成
-
-:: 启动应用
-echo 🎬 启动应用...
-python main.py
+:: 启动桌面应用
+echo 🎬 启动桌面应用...
+python desktop_app.py
 
 echo 👋 应用已关闭
 pause
