@@ -10,16 +10,21 @@ from pathlib import Path
 import sys
 import os
 
-try:
-    from moviepy.editor import (
-        VideoFileClip, ImageClip, AudioFileClip, CompositeVideoClip,
-        CompositeAudioClip, TextClip, concatenate_videoclips
-    )
-    from moviepy.config import check
-    MOVIEPY_AVAILABLE = True
-except ImportError:
-    MOVIEPY_AVAILABLE = False
-    logging.warning("MoviePy未安装，视频合成功能将不可用")
+def check_moviepy():
+    """动态检测MoviePy是否可用"""
+    try:
+        import moviepy
+        from moviepy.editor import (
+            VideoFileClip, ImageClip, AudioFileClip, CompositeVideoClip,
+            CompositeAudioClip, TextClip, concatenate_videoclips
+        )
+        return True
+    except ImportError as e:
+        logging.warning(f"MoviePy不可用: {e}")
+        return False
+
+# 初始检测，但允许后续重新检测
+MOVIEPY_AVAILABLE = check_moviepy()
 
 # 添加项目根目录到Python路径
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -63,11 +68,19 @@ class VideoComposer:
         Returns:
             str: 输出视频文件路径，失败返回None
         """
-        if not MOVIEPY_AVAILABLE:
+        # 动态检测MoviePy可用性
+        moviepy_available = check_moviepy()
+        if not moviepy_available:
             logger.error("MoviePy不可用，使用模拟视频生成")
             return self._create_mock_video(output_filename)
         
         try:
+            # 动态导入MoviePy模块
+            from moviepy.editor import (
+                VideoFileClip, ImageClip, AudioFileClip, CompositeVideoClip,
+                CompositeAudioClip, TextClip, concatenate_videoclips
+            )
+            
             logger.info("开始视频合成")
             
             # 创建场景视频片段
