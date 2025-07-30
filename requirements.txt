@@ -1,0 +1,22 @@
+# 育儿卡通视频一键通 - 依赖库
+
+# GUI框架
+customtkinter==5.2.2
+
+# 视频处理
+moviepy==1.0.3
+Pillow==10.1.0
+numpy>=1.21.0
+
+# 语音合成 (TTS)
+edge-tts==6.1.12
+
+# LLM API调用
+openai==1.3.8
+requests==2.31.0
+
+# 数据处理
+pydub==0.25.1
+
+# 其他工具
+pathlib2>=2.3.0

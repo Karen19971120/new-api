@@ -1,193 +1,187 @@
-<p align="right">
-   <strong>中文</strong> | <a href="./README.en.md">English</a>
-</p>
-<div align="center">
+# 育儿卡通视频一键通 v1.0
 
-![new-api](/web/public/logo.png)
+> 一款为零基础内容创作者设计的桌面软件，只需输入一个育儿关键词，即可自动生成适配短视频平台的卡通讲解风格视频。
 
-# New API
+## 🎯 产品特色
 
-🍥新一代大模型网关与AI资产管理系统
+- **极简操作**: 输入关键词 → 点击生成 → 获得成品视频
+- **全自动化**: 脚本生成、配音、素材匹配、视频剪辑一键完成
+- **专业内容**: 基于AI生成的专业育儿知识脚本
+- **平台适配**: 竖屏(720x1280)格式，完美适配抖音、小红书等平台
+- **免费使用**: 核心功能完全免费，无需专业技能
 
-<a href="https://trendshift.io/repositories/8227" target="_blank"><img src="https://trendshift.io/api/badge/repositories/8227" alt="Calcium-Ion%2Fnew-api | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+## 🚀 快速开始
 
-<p align="center">
-  <a href="https://raw.githubusercontent.com/Calcium-Ion/new-api/main/LICENSE">
-    <img src="https://img.shields.io/github/license/Calcium-Ion/new-api?color=brightgreen" alt="license">
-  </a>
-  <a href="https://github.com/Calcium-Ion/new-api/releases/latest">
-    <img src="https://img.shields.io/github/v/release/Calcium-Ion/new-api?color=brightgreen&include_prereleases" alt="release">
-  </a>
-  <a href="https://github.com/users/Calcium-Ion/packages/container/package/new-api">
-    <img src="https://img.shields.io/badge/docker-ghcr.io-blue" alt="docker">
-  </a>
-  <a href="https://hub.docker.com/r/CalciumIon/new-api">
-    <img src="https://img.shields.io/badge/docker-dockerHub-blue" alt="docker">
-  </a>
-  <a href="https://goreportcard.com/report/github.com/Calcium-Ion/new-api">
-    <img src="https://goreportcard.com/badge/github.com/Calcium-Ion/new-api" alt="GoReportCard">
-  </a>
-</p>
-</div>
+### 环境要求
 
-## 📝 项目说明
+- Python 3.8 或更高版本
+- Windows 10/11, macOS 10.14+, 或 Ubuntu 18.04+
+- 至少 4GB 可用内存
+- 1GB 可用磁盘空间
 
-> [!NOTE]  
-> 本项目为开源项目，在[One API](https://github.com/songquanpeng/one-api)的基础上进行二次开发
+### 安装步骤
 
-> [!IMPORTANT]  
-> - 本项目仅供个人学习使用，不保证稳定性，且不提供任何技术支持。
-> - 使用者必须在遵循 OpenAI 的[使用条款](https://openai.com/policies/terms-of-use)以及**法律法规**的情况下使用，不得用于非法用途。
-> - 根据[《生成式人工智能服务管理暂行办法》](http://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm)的要求，请勿对中国地区公众提供一切未经备案的生成式人工智能服务。
+1. **克隆项目**
+   ```bash
+   git clone <repository-url>
+   cd parenting_video_generator
+   ```
 
-## 📚 文档
+2. **安装依赖**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-详细文档请访问我们的官方Wiki：[https://docs.newapi.pro/](https://docs.newapi.pro/)
+3. **运行应用**
+   ```bash
+   python main.py
+   ```
 
-也可访问AI生成的DeepWiki:
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/QuantumNous/new-api)
+### 首次使用
 
-## ✨ 主要特性
+1. 启动应用后，在输入框中输入育儿关键词（如"孩子不爱吃饭"）
+2. 点击"🎬 一键生成视频"按钮
+3. 等待生成完成（通常需要1-3分钟）
+4. 在输出文件夹中找到生成的MP4视频文件
 
-New API提供了丰富的功能，详细特性请参考[特性说明](https://docs.newapi.pro/wiki/features-introduction)：
+## 📋 功能说明
 
-1. 🎨 全新的UI界面
-2. 🌍 多语言支持
-3. 💰 支持在线充值功能（易支付）
-4. 🔍 支持用key查询使用额度（配合[neko-api-key-tool](https://github.com/Calcium-Ion/neko-api-key-tool)）
-5. 🔄 兼容原版One API的数据库
-6. 💵 支持模型按次数收费
-7. ⚖️ 支持渠道加权随机
-8. 📈 数据看板（控制台）
-9. 🔒 令牌分组、模型限制
-10. 🤖 支持更多授权登陆方式（LinuxDO,Telegram、OIDC）
-11. 🔄 支持Rerank模型（Cohere和Jina），[接口文档](https://docs.newapi.pro/api/jinaai-rerank)
-12. ⚡ 支持OpenAI Realtime API（包括Azure渠道），[接口文档](https://docs.newapi.pro/api/openai-realtime)
-13. ⚡ 支持Claude Messages 格式，[接口文档](https://docs.newapi.pro/api/anthropic-chat)
-14. 支持使用路由/chat2link进入聊天界面
-15. 🧠 支持通过模型名称后缀设置 reasoning effort：
-    1. OpenAI o系列模型
-        - 添加后缀 `-high` 设置为 high reasoning effort (例如: `o3-mini-high`)
-        - 添加后缀 `-medium` 设置为 medium reasoning effort (例如: `o3-mini-medium`)
-        - 添加后缀 `-low` 设置为 low reasoning effort (例如: `o3-mini-low`)
-    2. Claude 思考模型
-        - 添加后缀 `-thinking` 启用思考模式 (例如: `claude-3-7-sonnet-20250219-thinking`)
-16. 🔄 思考转内容功能
-17. 🔄 针对用户的模型限流功能
-18. 💰 缓存计费支持，开启后可以在缓存命中时按照设定的比例计费：
-    1. 在 `系统设置-运营设置` 中设置 `提示缓存倍率` 选项
-    2. 在渠道中设置 `提示缓存倍率`，范围 0-1，例如设置为 0.5 表示缓存命中时按照 50% 计费
-    3. 支持的渠道：
-        - [x] OpenAI
-        - [x] Azure
-        - [x] DeepSeek
-        - [x] Claude
+### 核心工作流程
 
-## 模型支持
+1. **智能脚本生成**: 使用大语言模型生成专业的育儿知识脚本
+2. **语音合成**: 使用微软Edge TTS生成高质量中文语音
+3. **素材匹配**: 自动匹配合适的背景、角色和道具图片
+4. **字幕生成**: 自动生成与语音同步的字幕
+5. **视频合成**: 使用MoviePy合成最终视频
+6. **背景音乐**: 自动添加温馨的背景音乐
 
-此版本支持多种模型，详情请参考[接口文档-中继接口](https://docs.newapi.pro/api)：
+### 支持的输入示例
 
-1. 第三方模型 **gpts** （gpt-4-gizmo-*）
-2. 第三方渠道[Midjourney-Proxy(Plus)](https://github.com/novicezk/midjourney-proxy)接口，[接口文档](https://docs.newapi.pro/api/midjourney-proxy-image)
-3. 第三方渠道[Suno API](https://github.com/Suno-API/Suno-API)接口，[接口文档](https://docs.newapi.pro/api/suno-music)
-4. 自定义渠道，支持填入完整调用地址
-5. Rerank模型（[Cohere](https://cohere.ai/)和[Jina](https://jina.ai/)），[接口文档](https://docs.newapi.pro/api/jinaai-rerank)
-6. Claude Messages 格式，[接口文档](https://docs.newapi.pro/api/anthropic-chat)
-7. Dify，当前仅支持chatflow
+- "孩子两岁叛逆期怎么办"
+- "宝宝不爱吃饭"
+- "如何培养孩子的专注力"
+- "幼儿睡眠问题"
+- "儿童情绪管理"
 
-## 环境变量配置
+## ⚙️ 高级配置
 
-详细配置说明请参考[安装指南-环境变量配置](https://docs.newapi.pro/installation/environment-variables)：
+### API配置（可选）
 
-- `GENERATE_DEFAULT_TOKEN`：是否为新注册用户生成初始令牌，默认为 `false`
-- `STREAMING_TIMEOUT`：流式回复超时时间，默认120秒
-- `DIFY_DEBUG`：Dify渠道是否输出工作流和节点信息，默认 `true`
-- `FORCE_STREAM_OPTION`：是否覆盖客户端stream_options参数，默认 `true`
-- `GET_MEDIA_TOKEN`：是否统计图片token，默认 `true`
-- `GET_MEDIA_TOKEN_NOT_STREAM`：非流情况下是否统计图片token，默认 `true`
-- `UPDATE_TASK`：是否更新异步任务（Midjourney、Suno），默认 `true`
-- `COHERE_SAFETY_SETTING`：Cohere模型安全设置，可选值为 `NONE`, `CONTEXTUAL`, `STRICT`，默认 `NONE`
-- `GEMINI_VISION_MAX_IMAGE_NUM`：Gemini模型最大图片数量，默认 `16`
-- `MAX_FILE_DOWNLOAD_MB`: 最大文件下载大小，单位MB，默认 `20`
-- `CRYPTO_SECRET`：加密密钥，用于加密数据库内容
-- `AZURE_DEFAULT_API_VERSION`：Azure渠道默认API版本，默认 `2025-04-01-preview`
-- `NOTIFICATION_LIMIT_DURATION_MINUTE`：通知限制持续时间，默认 `10`分钟
-- `NOTIFY_LIMIT_COUNT`：用户通知在指定持续时间内的最大数量，默认 `2`
-- `ERROR_LOG_ENABLED=true`: 是否记录并显示错误日志，默认`false`
+如果您有OpenAI API密钥，可以获得更好的脚本生成效果：
 
-## 部署
+1. 点击应用中的"⚙️ 设置"按钮
+2. 输入您的OpenAI API Key
+3. 重启应用
 
-详细部署指南请参考[安装指南-部署方式](https://docs.newapi.pro/installation)：
+**注意**: 即使不配置API，应用也会使用内置的模拟数据正常运行。
 
-> [!TIP]
-> 最新版Docker镜像：`calciumion/new-api:latest`  
+### 自定义素材
 
-### 多机部署注意事项
-- 必须设置环境变量 `SESSION_SECRET`，否则会导致多机部署时登录状态不一致
-- 如果公用Redis，必须设置 `CRYPTO_SECRET`，否则会导致多机部署时Redis内容无法获取
+您可以替换默认素材以获得更个性化的视频：
 
-### 部署要求
-- 本地数据库（默认）：SQLite（Docker部署必须挂载`/data`目录）
-- 远程数据库：MySQL版本 >= 5.7.8，PgSQL版本 >= 9.6
-
-### 部署方式
-
-#### 使用宝塔面板Docker功能部署
-安装宝塔面板（**9.2.0版本**及以上），在应用商店中找到**New-API**安装即可。
-[图文教程](./docs/BT.md)
-
-#### 使用Docker Compose部署（推荐）
-```shell
-# 下载项目
-git clone https://github.com/Calcium-Ion/new-api.git
-cd new-api
-# 按需编辑docker-compose.yml
-# 启动
-docker-compose up -d
+```
+assets/
+├── images/
+│   ├── backgrounds/    # 背景图片 (PNG格式)
+│   ├── characters/     # 角色图片 (PNG格式)
+│   └── props/         # 道具图片 (PNG格式)
+└── music/
+    └── background/    # 背景音乐 (MP3格式)
 ```
 
-#### 直接使用Docker镜像
-```shell
-# 使用SQLite
-docker run --name new-api -d --restart always -p 3000:3000 -e TZ=Asia/Shanghai -v /home/ubuntu/data/new-api:/data calciumion/new-api:latest
+## 🛠️ 技术架构
 
-# 使用MySQL
-docker run --name new-api -d --restart always -p 3000:3000 -e SQL_DSN="root:123456@tcp(localhost:3306)/oneapi" -e TZ=Asia/Shanghai -v /home/ubuntu/data/new-api:/data calciumion/new-api:latest
+### 核心模块
+
+- **ScriptGenerator**: 脚本生成模块，集成LLM API
+- **TTSGenerator**: 语音合成模块，基于edge-tts
+- **AssetManager**: 素材管理模块，智能匹配图片资源
+- **VideoComposer**: 视频合成模块，基于MoviePy
+- **VideoGenerator**: 主控制器，协调各模块工作流程
+
+### 技术栈
+
+- **GUI框架**: Tkinter + CustomTkinter
+- **视频处理**: MoviePy
+- **语音合成**: edge-tts (微软Edge TTS)
+- **LLM集成**: OpenAI API
+- **图像处理**: Pillow
+- **音频处理**: pydub
+
+## 📖 使用场景
+
+### 目标用户
+
+- **育儿博主**: 快速制作专业的育儿知识视频
+- **自媒体创作者**: 扩展内容品类，进入育儿领域
+- **幼师/育儿专家**: 制作教学视频和家长指导内容
+- **普通家长**: 分享育儿经验，建立个人品牌
+
+### 应用场景
+
+- 抖音、小红书、微信视频号内容创作
+- 育儿知识科普视频制作
+- 家长群分享素材制作
+- 育儿培训课程辅助材料
+
+## 🔧 常见问题
+
+### Q: 生成的视频质量如何？
+A: 生成的视频包含高质量的语音合成、同步字幕、适配的背景图片，完全可以直接发布到短视频平台。
+
+### Q: 需要专业的视频制作技能吗？
+A: 完全不需要。只要会打字和点击鼠标就能操作。
+
+### Q: 生成一个视频需要多长时间？
+A: 通常1-3分钟，具体取决于脚本长度和计算机性能。
+
+### Q: 可以商用吗？
+A: 可以。生成的视频内容您拥有完全的使用权。
+
+### Q: 支持自定义内容吗？
+A: 当前版本主要基于AI生成内容，未来版本将支持更多自定义选项。
+
+## 📝 更新日志
+
+### v1.0.0 (2024-12-20)
+- ✨ 首次发布
+- 🎬 一键视频生成功能
+- 🔊 高质量TTS语音合成
+- 🎵 自动背景音乐添加
+- 📱 短视频平台适配
+- 🖥️ 现代化桌面界面
+
+## 🤝 参与贡献
+
+欢迎提交Issue和Pull Request来帮助改进这个项目！
+
+### 开发环境搭建
+
+```bash
+# 克隆项目
+git clone <repository-url>
+cd parenting_video_generator
+
+# 创建虚拟环境
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 安装开发依赖
+pip install -r requirements.txt
+
+# 运行测试
+python -m pytest tests/
 ```
 
-## 渠道重试与缓存
-渠道重试功能已经实现，可以在`设置->运营设置->通用设置`设置重试次数，**建议开启缓存**功能。
+## 📄 许可证
 
-### 缓存设置方法
-1. `REDIS_CONN_STRING`：设置Redis作为缓存
-2. `MEMORY_CACHE_ENABLED`：启用内存缓存（设置了Redis则无需手动设置）
+MIT License - 详见 [LICENSE](LICENSE) 文件
 
-## 接口文档
+## 📞 支持与反馈
 
-详细接口文档请参考[接口文档](https://docs.newapi.pro/api)：
+- 问题反馈: [GitHub Issues](https://github.com/your-repo/issues)
+- 功能建议: [GitHub Discussions](https://github.com/your-repo/discussions)
 
-- [聊天接口（Chat）](https://docs.newapi.pro/api/openai-chat)
-- [图像接口（Image）](https://docs.newapi.pro/api/openai-image)
-- [重排序接口（Rerank）](https://docs.newapi.pro/api/jinaai-rerank)
-- [实时对话接口（Realtime）](https://docs.newapi.pro/api/openai-realtime)
-- [Claude聊天接口（messages）](https://docs.newapi.pro/api/anthropic-chat)
+---
 
-## 相关项目
-- [One API](https://github.com/songquanpeng/one-api)：原版项目
-- [Midjourney-Proxy](https://github.com/novicezk/midjourney-proxy)：Midjourney接口支持
-- [chatnio](https://github.com/Deeptrain-Community/chatnio)：下一代AI一站式B/C端解决方案
-- [neko-api-key-tool](https://github.com/Calcium-Ion/neko-api-key-tool)：用key查询使用额度
-
-其他基于New API的项目：
-- [new-api-horizon](https://github.com/Calcium-Ion/new-api-horizon)：New API高性能优化版
-
-## 帮助支持
-
-如有问题，请参考[帮助支持](https://docs.newapi.pro/support)：
-- [社区交流](https://docs.newapi.pro/support/community-interaction)
-- [反馈问题](https://docs.newapi.pro/support/feedback-issues)
-- [常见问题](https://docs.newapi.pro/support/faq)
-
-## 🌟 Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Calcium-Ion/new-api&type=Date)](https://star-history.com/#Calcium-Ion/new-api&Date)
+**❤️ 如果这个项目对您有帮助，请给我们一个Star支持一下！**
